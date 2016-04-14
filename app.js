@@ -5,7 +5,7 @@ angular
   .config(config);
 
 config.$inject = ["$routeProvider", "$locationProvider"];
-function config($routeProvider, $locationProvider) {
+function config(   $routeProvider,   $locationProvider  ) {
   // Setup Routes
   $routeProvider
     .when('/', {
@@ -19,7 +19,7 @@ function config($routeProvider, $locationProvider) {
       controllerAs: 'colorCtrl'
     })
 
-  // Use html5 pushstate (i.e. no more `#` in routes)
+  // using html5Mode means we don't have /#/colors in our URL
   $locationProvider.html5Mode({
     enabled: true,
     requireBase: false
@@ -32,8 +32,9 @@ function ColorsIndexController(){
 }
 
 ColorsShowController.$inject = ["$routeParams"];
-function ColorsShowController($routeParams){
-  this.colors = COLORS;
+function ColorsShowController(   $routeParams   ){
+  var vm = this;
+  vm.colors = COLORS;
 
   console.log('$routeParams.hex is', $routeParams.hex);
 }
@@ -209,4 +210,4 @@ var COLORS = [
     {name: "LightYellow", hex: "FFFFE0"},
     {name: "Ivory", hex: "FFFFF0"},
     {name: "White", hex: "FFFFFF"}
-]
+];
