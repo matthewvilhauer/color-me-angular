@@ -25,8 +25,6 @@ Run the server:
 budo -P --host=localhost --open
 ```
 
-## ngRoute Setup
-TODO
 
 ## Bonuses
 * **Semantic Routes**: Create separate routes for `/color/name/:name` and `color/hex/:hex`, but have them route to the same show page.
