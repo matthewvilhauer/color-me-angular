@@ -6,18 +6,24 @@ angular
 
 config.$inject = ["$routeProvider", "$locationProvider"];
 function config($routeProvider, $locationProvider) {
+  // Setup Routes
   $routeProvider
     .when('/', {
-      templateUrl: '/templates/colors/index.html'
+      templateUrl: '/templates/colors/index.html',
+      controller: 'ColorsIndexController',
+      controllerAs: 'colorsCtrl'
     })
     .when('/:hex', {
-      templateUrl: '/templates/colors/show.html'
+      templateUrl: '/templates/colors/show.html',
+      controller: 'ColorsShowController',
+      controllerAs: 'colorCtrl'
     })
 
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    });
+  // Use html5 pushstate (i.e. no more `#` in routes)
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
 }
 
 ColorsIndexController.$inject = [];
@@ -29,10 +35,7 @@ ColorsShowController.$inject = ["$routeParams"];
 function ColorsShowController($routeParams){
   this.colors = COLORS;
 
-  var hex = $routeParams.hex;
-  this.color = this.colors.find(function(c){
-    return c.hex === hex;
-  })
+  console.log('$routeParams.hex is', $routeParams.hex);
 }
 
 
