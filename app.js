@@ -18,6 +18,11 @@ function config(   $routeProvider,   $locationProvider  ) {
       controller: 'ColorsShowController',
       controllerAs: 'colorCtrl'
     })
+    .when('/colors/:colorId/', {
+      templateUrl: '/templates/colors/show.html',
+      controller: 'ColorsShowController',
+      controllerAs: 'colorCtrl'
+    });
 
   // using html5Mode means we don't have /#/colors in our URL
   $locationProvider.html5Mode({
@@ -37,7 +42,8 @@ function ColorsShowController(   $routeParams   ){
 
   console.log('$routeParams.index is', $routeParams.index);
 
-  vm.color = COLORS[33];
+  var colorId = $routeParams.colorId;
+  // use `bookId` to find specific book
 }
 
 
